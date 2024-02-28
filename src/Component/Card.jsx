@@ -2,7 +2,7 @@
 
 const Card = () => {
   return (
-    <div>Hola, Soy una Tergeta</div>
+    <div>Hola, Soy una Tergeta y estoy del 1</div>
   )
 }
 
