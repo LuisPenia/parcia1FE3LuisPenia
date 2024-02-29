@@ -1,21 +1,17 @@
 //import React from 'react'
 
-import { useState } from "react"
+const Card = ({superado, marca, modelo}) => {
 
-const Card = (superado) => {
-
-  console.log('superados '+ superado.value)
-
-  const [mostrar, setMostrar] = useState (false)
-
-  if (!superado === true){
-    setMostrar(true)
-  }
+  console.log('superados '+ superado)
 
   return (
     
   <h2>
-    {mostrar && <div>Hola, Soy una Tergeta y estoy del 1</div>}
+    {superado &&
+    <>
+      <h4>PC seleccionado: {marca}</h4>
+      <h4>Modelo: {modelo}</h4>
+    </>}
   </h2>
     
   )

@@ -13,25 +13,27 @@ const Form = () => {
     modelo: ''
   })
 
-  const regexmarca = /^(?! )[a-zA-Z0-9]{3,}$/
-  /*
-  ^: Coincide con el inicio de la cadena.
-  (?! ): Utiliza una afirmación negativa para asegurarse de que la cadena no comience con un espacio en blanco.
-  [a-zA-Z0-9]: Coincide con cualquier carácter alfanumérico (letra o número).
-  {3,}: Asegura que haya al menos 3 caracteres alfanuméricos.
-  $: Coincide con el final de la cadena.
-  */
+  const regexmarca = /^(?! )[^\n]{3,}$/
+    /*
+    ^     : Coincide con el inicio de la cadena.
+    (?! ) : Utiliza una afirmación negativa para asegurarse de que la cadena no comience con un espacio en blanco.
+    [^\n] : Coincide con cualquier carácter (incluido espacio en blanco).
+    {3,}  : Asegura que haya al menos 3 caracteres.
+    $     : Coincide con el final de la cadena.
+    */
 
-  const regexmodelo = /^[a-zA-Z0-9]{6,}$/
+  const regexmodelo = /^[^\n]{6,}$/
   /*
-    ^: Coincide con el inicio de la cadena.
-    [a-zA-Z0-9]: Coincide con cualquier carácter alfanumérico (letra o número).
-    {6,}: Asegura que haya al menos 6 caracteres alfanuméricos.
-    $: Coincide con el final de la cadena.
+    ^     : Coincide con el inicio de la cadena.
+    [^\n] : Coincide con cualquier carácter (incluido espacio en blanco).
+    {6,}  : Asegura que haya al menos 6 caracteres.
+    $     : Coincide con el final de la cadena.
   */
 
   const manejarEnvio = (evento) => {
     evento.preventDefault();
+
+    if(superado){window.location.reload()}
 
     if (!(regexmarca.test(pc.marca) && regexmodelo.test(pc.modelo))){
       setShow(true)
@@ -42,8 +44,7 @@ const Form = () => {
     
   }
 
-  //console.log(regexmarca.test(pc.marca) && regexmodelo.test(pc.modelo))
-  console.log('show ' + show + ' ' +superado)
+  console.log('show ' + show )
 
   return (
     
@@ -53,34 +54,26 @@ const Form = () => {
       <p>
         <label>Marca : </label>
         <input type="text" onChange = {(event) => setPc ({...pc, marca: event.target.value})}/>
+        
       </p>
+      {show&&!regexmarca.test(pc.marca) && <a>Al menos 3 Caracteres que no comiencen por Espacio-Vacio</a>}
       <p>
         <label>Modelo: </label>
         <input type="text" onChange = {(event) => setPc ({...pc, modelo: event.target.value})}/>
       </p>
+      {show&&!regexmodelo.test(pc.modelo) && <a>Al menos 6 Caracteres</a>}
       <p>
-        < button>Enviar</button>
+        {!superado && <button>Enviar</button>}
+        {superado && <button>Limpiar</button>}
       </p>
     </form>
       
-      {show && <h4> “Por favor chequea que la información sea correcta” </h4>}
-      {show && <Card key={1} superado={'OK!'} />}
+    {show && <h4> “Por favor chequea que la información sea correcta” </h4>}
+    {!show && <Card superado={superado} marca={pc.marca} modelo={pc.modelo}/>}
       
-      
-
     </>
-
-    
 
   )
 }
-
-
-/*
-    {show && <h4>{paciente.nombre}</h4>}
-    {console.log(show, paciente.nombre.length)}
-    {!show && <h4>Ingrese Nombre de Paciente</h4>}
-*/
-
 
 export default Form
