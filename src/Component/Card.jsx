@@ -4,7 +4,7 @@ import { useState } from "react"
 
 const Card = (superado) => {
 
-  console.log('superados '+ superado)
+  console.log('superados '+ superado.value)
 
   const [mostrar, setMostrar] = useState (false)
 

@@ -6,6 +6,7 @@ import Card from "./Card"
 const Form = () => {
 
   const [show, setShow] = useState(false)
+  const [superado, setSuperado] = useState(false)
 
   const [pc, setPc] = useState ({
     marca: '',
@@ -36,12 +37,13 @@ const Form = () => {
       setShow(true)
     } else {
       setShow(false)
+      setSuperado(true)
     }
     
   }
 
   //console.log(regexmarca.test(pc.marca) && regexmodelo.test(pc.modelo))
-  console.log('show ' + show)
+  console.log('show ' + show + ' ' +superado)
 
   return (
     
@@ -62,7 +64,7 @@ const Form = () => {
     </form>
       
       {show && <h4> “Por favor chequea que la información sea correcta” </h4>}
-      {!show && <Card superado={true}/>}
+      {show && <Card key={1} superado={'OK!'} />}
       
       
 
