@@ -56,12 +56,12 @@ const Form = () => {
         <input type="text" onChange = {(event) => setPc ({...pc, marca: event.target.value})}/>
         
       </p>
-      {show&&!regexmarca.test(pc.marca) && <a>Al menos 3 Caracteres que no comiencen por Espacio-Vacio</a>}
+      {show&&!regexmarca.test(pc.marca) ? <a>Marca: Al menos 3 Caracteres que no comiencen por Espacio-Vacio</a> : <p>________________________________________</p>}
       <p>
         <label>Modelo: </label>
         <input type="text" onChange = {(event) => setPc ({...pc, modelo: event.target.value})}/>
       </p>
-      {show&&!regexmodelo.test(pc.modelo) && <a>Al menos 6 Caracteres</a>}
+      {show&&!regexmodelo.test(pc.modelo) ? <a>Modelo: Al menos 6 Caracteres</a> : <p>________________________________________</p>}
       <p>
         {!superado && <button>Enviar</button>}
         {superado && <button>Limpiar</button>}

@@ -6,13 +6,13 @@ const Card = ({superado, marca, modelo}) => {
 
   return (
     
-  <h2>
-    {superado &&
+  <p class="contenedor-fila">
+    {superado && 
     <>
-      <h4>PC seleccionado: {marca}</h4>
-      <h4>Modelo: {modelo}</h4>
+      <h3>PC seleccionado: {marca}</h3>
+      <h3>Modelo: {modelo}</h3>
     </>}
-  </h2>
+  </p>
     
   )
 }

@@ -68,5 +68,49 @@ button:focus-visible {
 }
 
 div {
+  height: 350px;
+  width: 566px ;
+  color:antiquewhite;
   background-color: #213547;
+}
+
+hr {
+  height: 3px;
+}
+
+.contenedor-fila {
+  display: flex;
+  justify-content: space-around;
+}
+
+@keyframes parpadeo {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+h4 {
+  animation: parpadeo 1s 2; /* 1s de duración, repetición infinita */
+}
+
+@keyframes ingresoDesplazado {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px); /* Desplazamiento inicial a la izquierda */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0); /* Sin desplazamiento, posición final */
+  }
+}
+
+h3 {
+
+  animation: ingresoDesplazado 0.5s ease-out; /* 0.5s de duración con efecto ease-out */
 }
