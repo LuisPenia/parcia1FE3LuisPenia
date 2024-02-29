@@ -1,8 +1,23 @@
 //import React from 'react'
 
-const Card = () => {
+import { useState } from "react"
+
+const Card = (superado) => {
+
+  console.log('superados '+ superado)
+
+  const [mostrar, setMostrar] = useState (false)
+
+  if (!superado === true){
+    setMostrar(true)
+  }
+
   return (
-    <div>Hola, Soy una Tergeta y estoy del 1</div>
+    
+  <h2>
+    {mostrar && <div>Hola, Soy una Tergeta y estoy del 1</div>}
+  </h2>
+    
   )
 }
 
